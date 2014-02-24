@@ -1,6 +1,5 @@
 package org.wiztools.bc;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -12,7 +11,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
  */
 public class Main {
     
-    private static BigDecimal compute(String inputStr) {
+    static BigDecimal compute(String inputStr) {
         ANTLRInputStream input = new ANTLRInputStream(inputStr);
         ExprLexer lexer = new ExprLexer(input);
         
@@ -29,7 +28,7 @@ public class Main {
         return out;
     }
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         
         String consoleInput;
         while((consoleInput=System.console().readLine()) != null) {
