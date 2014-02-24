@@ -13,9 +13,8 @@ public class MyExprVisitor extends ExprBaseVisitor<BigDecimal> {
 
     @Override
     public BigDecimal visitNumber(ExprParser.NumberContext ctx) {
-        BigDecimal out = new BigDecimal(ctx.NUMBER().getText());
-        finalOut = out;
-        return out;
+        finalOut = new BigDecimal(ctx.NUMBER().getText());
+        return finalOut;
     }
 
     @Override
@@ -23,15 +22,12 @@ public class MyExprVisitor extends ExprBaseVisitor<BigDecimal> {
         BigDecimal left = visit(ctx.expr(0));
         BigDecimal right = visit(ctx.expr(1));
         if(ctx.op.getType() == ExprParser.MUL) {
-            BigDecimal out = left.multiply(right);
-            finalOut = out;
-            return out;
+            finalOut = left.multiply(right);
         }
         else {
-            BigDecimal out = left.divide(right);
-            finalOut = out;
-            return out;
+            finalOut = left.divide(right);
         }
+        return finalOut;
     }
 
     @Override
@@ -39,22 +35,18 @@ public class MyExprVisitor extends ExprBaseVisitor<BigDecimal> {
         BigDecimal left = visit(ctx.expr(0));
         BigDecimal right = visit(ctx.expr(1));
         if(ctx.op.getType() == ExprParser.ADD) {
-            BigDecimal out = left.add(right);
-            finalOut = out;
-            return out;
+            finalOut = left.add(right);
         }
         else {
-            BigDecimal out = left.subtract(right);
-            finalOut = out;
-            return out;
+            finalOut = left.subtract(right);
         }
+        return finalOut;
     }
 
     @Override
     public BigDecimal visitParens(ExprParser.ParensContext ctx) {
-        BigDecimal out = visit(ctx.expr());
-        finalOut = out;
-        return out;
+        finalOut = visit(ctx.expr());
+        return finalOut;
     }
 
     @Override
