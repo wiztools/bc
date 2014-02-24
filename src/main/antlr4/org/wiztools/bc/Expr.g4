@@ -7,7 +7,8 @@ expr :	expr op=('*'|'/') expr     # MulDiv
     |	'(' expr ')'               # parens
     ;
 
-NUMBER  : [0-9]+ ;
+NUMBER  : INT ('.' INT)? ;
+INT     : [0-9]+ ;
 WS      : [ \t]+ -> skip ;
 
 // Assign Token names to arithmetic symbols used in grammar:
