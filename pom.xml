@@ -8,7 +8,14 @@
     <packaging>jar</packaging>
 
     <name>bc</name>
-    <url>http://wiztools.org</url>
+    <url>https://github.com/wiztools/bc</url>
+    
+    <scm>
+        <connection>scm:git:https://github.com/wiztools/bc.git</connection>
+        <developerConnection>scm:git:https://github.com/wiztools/bc.git</developerConnection>
+        <url>https://github.com/wiztools/bc</url>
+    </scm>
+    
     <build>
         <plugins>
             <plugin>
