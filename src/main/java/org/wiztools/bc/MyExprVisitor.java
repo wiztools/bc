@@ -1,6 +1,7 @@
 package org.wiztools.bc;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 /**
@@ -25,7 +26,7 @@ public class MyExprVisitor extends ExprBaseVisitor<BigDecimal> {
             finalOut = left.multiply(right);
         }
         else {
-            finalOut = left.divide(right);
+            finalOut = left.divide(right, MathContext.DECIMAL128);
         }
         return finalOut;
     }
