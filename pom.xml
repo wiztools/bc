@@ -83,11 +83,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.wiztools</groupId>
-            <artifactId>arxiv-math</artifactId>
-            <version>0.9.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
             <version>4.7.1</version>

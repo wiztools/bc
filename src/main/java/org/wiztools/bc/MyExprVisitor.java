@@ -3,7 +3,6 @@ package org.wiztools.bc;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.nevec.rjm.BigDecimalMath;
 
 /**
  *
@@ -49,7 +48,14 @@ public class MyExprVisitor extends ExprBaseVisitor<BigDecimal> {
     public BigDecimal visitPow(ExprParser.PowContext ctx) {
         BigDecimal left = visit(ctx.expr(0));
         BigDecimal right = visit(ctx.expr(1));
-        finalOut = BigDecimalMath.pow(left, right);
+        try {
+            finalOut = left.pow(right.intValueExact());
+        } catch (ArithmeticException ex) {
+            System.err.printf(
+                "Power value not an integer: %s. bc supports only integer. Sorry :-(\n", right
+            );
+            throw new RuntimeException(ex);
+        }
         return finalOut;
     }
 
