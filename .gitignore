@@ -1,2 +1,6 @@
 target
 out
+.classpath
+.project
+.settings/
+.vscode/

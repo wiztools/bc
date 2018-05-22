@@ -3,6 +3,7 @@ grammar Expr ;
 prog :	expr ;
 expr :	expr op=('*'|'/') expr     # MulDiv
     |	expr op=('+'|'-') expr     # AddSub
+    |	expr ('^') expr            # Pow
     |	NUMBER                     # number
     |	'(' expr ')'               # parens
     ;
@@ -17,3 +18,4 @@ MUL : '*';
 DIV : '/';
 ADD : '+';
 SUB : '-';
+POW : '^';

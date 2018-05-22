@@ -3,6 +3,7 @@ package org.wiztools.bc;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.nevec.rjm.BigDecimalMath;
 
 /**
  *
@@ -41,6 +42,14 @@ public class MyExprVisitor extends ExprBaseVisitor<BigDecimal> {
         else {
             finalOut = left.subtract(right);
         }
+        return finalOut;
+    }
+
+    @Override
+    public BigDecimal visitPow(ExprParser.PowContext ctx) {
+        BigDecimal left = visit(ctx.expr(0));
+        BigDecimal right = visit(ctx.expr(1));
+        finalOut = BigDecimalMath.pow(left, right);
         return finalOut;
     }
 
